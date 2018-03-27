@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Study</title>
+        <meta charset="utf-8">
+        <meta name="Shin" content="width-device-width", initial-scale="1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" href="style.css">
+        <script src="jquery.jsonrpc.js"></script>
+        <script src="script.js"></script>
+    
+        <script>
+            $(document).ready( function(){
+                open_category('home');
+            
+                $.jsonRPC.setup({
+                    endPoint : 'http://localhost:4000/api',
+                    namespace : ''
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div class="jumbotron center">
+            <h1 id="study">Study Page</h1>
+            <h3>This page is for club members.</h3>
+        </div>
+        <hr>
+        <div class="container-fluid">
+            <div class="row content">
+                <!-- Navigation -->
+                <div class="col-sm-3 sidenav">
+                    <div class="card box">
+                        <div class="card-header">
+                            <h2  id="username" class="center">Category</h2>
+                            <hr>    
+                        </div>
+                        <div class="card-body" id="category">
+                            <button type="button" class="btn btn-default btn-block" onclick="open_category('home')">Home</button>
+                            <button type="button" class="btn btn-default btn-block" onclick="open_category('graph')">Graph</button>
+                            <button type="button" class="btn btn-default btn-block" onclick="open_category('dp')">Dynamic Programming</button>
+                            <button type="button" class="btn btn-default btn-block" onclick="open_category('dc')">Divide & Conquer</button>
+                        </div>
+                        <hr>
+                        <div class="card-footer">
+                            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#writePost">Write a post</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page -->
+                <div class="col-sm-9">
+                    <div class="container page" id="home">
+                        <h1>HOME</h1>
+                    </div>
+                    <div class="container page" id="dp">
+                        <h1>DP</h1>
+                    </div>
+                    <div class="container page" id="graph">
+                        <h4><small>RECENT POSTS</small></h4>
+                        <hr>
+                        <h2>Title</h2>
+                        <h5>Post by Shin <span class="glyphicon glyphicon-time"></span>April 27, 2018.</h5>
+
+                        <h5>
+                            <span class="label label-danger">DP</span>
+                            <span class="label label-primary">DQ</span>
+                        </h5>
+                        <p>
+                            Test post.
+                        </p>
+                        <hr>
+
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" required></textarea><br>
+                                <button type="submit" class="btn btn-success btn-md" style="width:200px">Submit</button>
+                                <button type="reset" class="btn btn-primary btn-md" style="width:200px">Clear</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="writePost" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="center">Write a Post</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" id="signup_form">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    Number:
+                                    <input type="number" class="form-control" id="title" placeholder="Enter the number..."><br>
+                                </div>
+                                <div class="col-sm-8">
+                                    Title:
+                                    <input type="text" class="form-control" id="title" placeholder="Enter the title...">
+                                </div>
+                            </div>
+                            Text:
+                            <textarea cols="7" class="form-control", id="contents"></textarea><br>
+                            File:
+                            <input type="file" class="form-control" id="file" placeholder="Pick your file..." style="padding:4px">
+                            <br>        
+                            <button type="submit" class="btn btn-primary btn-block" nclick="signup()">Submit</button>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+.center{
+    text-align: center;
+}
+.jumbotron{
+    background-color: white;
+    height: 20%;
+}
+.box{
+    position: relative;
+    border:2px solid grey;
+    border-radius: 5px;
+    padding: 30px;
+}
