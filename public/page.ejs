@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Study</title>
+        <meta charset="utf-8">
+        <meta name="Shin" content="width-device-width", initial-scale="1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" href="/public/style.css">
+        <script src="/public/jquery.jsonrpc.js"></script>
+        <script src="/public/script.js"></script>
+    
+        <script>
+            $(document).ready( function(){
+                open_category('home', null);
+            
+                $.jsonRPC.setup({
+                    endPoint : 'http://localhost:4000/api',
+                    namespace : ''
+                });
+                
+                getCategorylist("<%=group%>");
+            });
+        </script>
+    </head>
+    <body>
+        <div class="jumbotron center">
+            <h1 id="study">Study Page</h1>
+            <h3>This page is for <%=group%> study members.</h3>
+        </div>
+        <hr>
+        <div class="container-fluid">
+            <div class="row content">
+                <!-- Navigation -->
+                <div class="col-sm-3 sidenav">
+                    <div class="card box">
+                        <div class="card-header">
+                            <h2  id="username" class="center">Category</h2>
+                            <hr>    
+                        </div>
+                        <div class="card-body" id="category">
+                            <button type="button" class="btn btn-default btn-block" onclick="open_category('home', null)">Home</button>
+                        </div>
+                        <hr>
+                        <div class="card-footer">
+                            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#writePost">Write a post</button>
+                            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#makeCate">Make Category</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page -->
+                <div class="col-sm-9" id="article">
+                    <!-- comment
+                    <form role="form">
+                        <div class="form-group">
+                            <h4>Reply</h4>
+                            <textarea class="form-control" rows="3" required></textarea><br>
+                            <button type="submit" class="btn btn-success btn-md" style="width:200px">Submit</button>
+                            <button type="reset" class="btn btn-primary btn-md" style="width:200px">Clear</button>
+                        </div>
+                    </form>
+                    -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="writePost" role="dialog">
+            <div class="modal-dialog" style="width:40%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="center">Write a Post</h2>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group" id="signup_form" action='/uploadFile' method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="group" value="<%=group%>">
+                            <input type="hidden" name="writer" value="<%=email%>">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    Number:
+                                    <input type="number" class="form-control" name="postNumber" placeholder="Enter the number in Backjoon site..."><br>
+                                </div>
+                                <div class="col-sm-4">
+                                    Category:
+                                    <select class="form-control" name="category" id="cateInPosting">
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    Title:
+                                    <input type="text" class="form-control" name="title" placeholder="Enter the title...">
+                                </div>
+                            </div>
+                            Description:
+                            <textarea cols="7" class="form-control" name="description"></textarea><br>
+                            File:
+                            <input type="file" class="form-control" name="files" placeholder="Pick your file..." style="padding:4px">
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block">Post</button>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="makeCate" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" id="close_mc">&times;</button>
+                            <h2 class="center">Add a category</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" id="makeCate_form">
+                            <input type="hidden" id="cate_group" value="<%=group%>">
+                            Category Name:
+                            <input type="text" class="form-control" id="cate_name" placeholder="Enter the category name...">
+                            <br>
+                            Short Name:
+                            <input type="text" class="form-control" id="cate_Shortname" id="cate_shortname" placeholder="Enter the short name for this category."><br>
+                            <hr>
+                            <h4 class="center">Short name should`nt contain numbers or special characters...</h4>
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block" onclick="makeCate()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -87,13 +87,16 @@
                 <h2 class="center">Select Group</h2>
                 <h4 class="center">Select group you wanna go.</h4>
                 <hr>
-                <div class="form-group" id="select_form">
-                    <!--For admin
-                    <button type="button" class="btn btn-default btn-block btn-md"onClick = "makeGroup('ALGO')">
+                <form class="form-group" method="post" id="select_form" action="/page">
+                    <input type="hidden" name="email" id="email_sf">
+                    <input type="hidden" name="group" id="group_sf">
+                    
+                    <!--
+                    <button type="button" class="btn btn-default btn-block btn-md"onClick = "makeGroup('TEST02')">
                         MakeGroup
                     </button>
                     -->
-                </div>
+                </form>
                 <hr>
             </div>
         </div>
