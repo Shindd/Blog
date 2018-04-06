@@ -20,6 +20,10 @@ Schema.createSchema = function(mongoose){
     
     GroupSchema.static('findByGroupname', function(groupname, callback){
         return this.find({groupname:groupname}, callback);
+    }); 
+    
+    GroupSchema.static('updateCategory', function(groupname, new_category, callback){
+        return this.update({groupname:groupname}, {$set: {category:new_category}}, callback); 
     });
     
 	return GroupSchema;

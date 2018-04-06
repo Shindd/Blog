@@ -28,7 +28,7 @@ Schema.createSchema = function(mongoose) {
 	  .get(function() { return this._password });
 	
 	// 스키마에 모델 인스턴스에서 사용할 수 있는 메소드 추가
-	// 비밀번호 암호화 메소드
+	// 비밀번호  암호화 메소드
 	UserSchema.method('encryptPassword', function(plainText, inSalt) {
 		if (inSalt) {
 			return crypto.createHmac('sha1', inSalt).update(plainText).digest('hex');
