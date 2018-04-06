@@ -34,9 +34,11 @@ var authUser = function(params, callback){
                 var user = new database.UserModel({email:email});
                 var authenticated = user.authenticate(pwd, results[0]._doc.salt, results[0]._doc.hashed_password);
                 
+                var data = {'name': results[0]._doc.name, 'authority': results[0]._doc.authority};
+                
                 if( authenticated){
                     console.log('Password match!');
-                    callback(null, true);
+                    callback(null, data);
                 }
                 else {
                     console.log('Password unmatch!');

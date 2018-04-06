@@ -1,5 +1,5 @@
 var getGrouplist = function(params, callback){
-    console.log('Called JSON-RPC:makeGroup.');
+    console.log('Called JSON-RPC:getGrouplist.');
     console.dir(params);
     
     if( params.length != 1){

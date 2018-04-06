@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var addGroup = function(params, callback){
     console.log('Called JSON-RPC:makeGroup.');
     console.dir(params);
@@ -42,6 +44,7 @@ var addGroup = function(params, callback){
             } 
             else{
                 console.log('Add Group data.');
+                fs.mkdir('uploads/'+groupname);
                 callback(null, {'groupname':groupname});
             }
         });
