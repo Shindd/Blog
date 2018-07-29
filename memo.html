@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+    <head>
+        <title>test WEB memo app</title>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        
+        <!-- LOAD BOOTSTRAP & JQUERY -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <!-- LOAD JS, CSS FILES -->
+        <link rel="stylesheet" href="style.css">
+        <script src='script.js'></script>
+    </head>
+    
+    <body onload="initialize()">
+       <!-- NAVIGATION -->
+        <nav class='navbar navbar-inverse'>
+            <div class="container-fluid">
+                <!-- NAVIGATION HEADER -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">Memo board</a>
+                </div>
+                
+                <!-- NAVIGATION LIST-->
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <!-- MENU BUTTONS-->
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" data-toggle='modal' data-target='#modal-save'>SAVE</a></li>
+                        <li><a href="#" data-toggle='modal' data-target='#modal-clear'>CLEAR</a></li>
+                    </ul>
+                    <!-- LOGIN-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>LOG IN</a></li>
+                    </ul>
+                    
+                    <!-- LOGOUT-->
+                    <!--
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>  LOG OUT</a></li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+        </nav>
+        
+        <!-- MEMO BOARD-->
+        <div class="container-fluid">
+            <!-- MEMO-->
+            <div class="col-md-6" style="padding:5px">
+                <div class="container-box" id="memo-box">
+                    <textarea name="" id="memo-textarea" spellcheck="false">
+                    
+                    </textarea>
+                </div>
+            </div>
+            
+            <!-- VIEW(READ ONLY)-->
+            <div class="col-md-6" style="padding:5px">
+                <div class="container-box" id="view-box">
+                    <div id="view-container">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- USAGE-->
+        <div class="container-fluid text-center">
+            #: NORMAL or END  |  #RL: RED  |  #BH: TITLE  |  #SH: SMALL TITLE  |  #HR: HORIZON LINE  |  #SL: START LIST  |  #EL: END LIST  |  #LC: LIST CONTENTS  |  &lt;br&gt;: &#8629;
+        </div>
+    </body>
+    
+    <!-- MODALS BELOW-->
+    <!-- SAVE MODAL-->
+    <div class="modal" id='modal-save'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- MODAL HEADER-->
+                <div class="modal-header">
+                    <h2 class="text-center modal-title">SAVE</h2>
+                </div>
+                
+                <!-- MODAL BODY-->
+                <div class="modal-body">
+                    contents!
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CLEAR MODAL-->
+    <div class="modal" id='modal-clear'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- MODAL HEADER-->
+                <div class="modal-header">
+                    <h2 class="text-center modal-title">CLEAR</h2>
+                    <div class='text-center'>
+                        DO YOU WANT TO DELETE ALL TEXTS?<br><br>
+                        <div class="col-md-6"><button class="btn btn-success btn-block" onclick='CLEAR_TEXTAREA()' data-dismiss='modal'>YES</button></div>
+                        <div class="col-md-6"><button class="btn btn-warning btn-block" data-dismiss='modal'>NO</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</html>

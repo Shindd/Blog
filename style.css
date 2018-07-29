@@ -1,0 +1,20 @@
+.container-box {
+    padding:20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+textarea {
+    resize: none;
+    font-size: 16px;
+    outline: 0px;
+    overflow: auto;
+}
+
+#memo-box {
+}
+
+#memo-textarea {
+    height:100%;
+    width:100%;
+}
